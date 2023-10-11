@@ -1,7 +1,14 @@
-import React from "react";
+import Header from "./Header";
+import InvoiceCard from "./InvoiceCard";
 
-const InvoiceDashboard = () => {
-  return <div></div>;
+const InvoiceDashboard = ({ data }) => {
+  console.log(data);
+  return (
+    <>
+      <Header />
+      <InvoiceCard data={data} />
+    </>
+  );
 };
 
 export default InvoiceDashboard;

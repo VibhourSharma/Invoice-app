@@ -37,7 +37,7 @@ const Header = () => {
         <div className="w-full h-px bg-slate-400 absolute bottom-24"></div>
         <div className="w-full flex justify-center absolute bottom-0 py-6">
           <img src={profile} alt="profile" className="rounded-full h-11" />
-        </div>
+        </div>{" "}
       </div>
     </div>
   );
