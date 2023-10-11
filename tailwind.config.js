@@ -7,6 +7,9 @@ export default {
       colors: {
         sidebar: "#373B53",
       },
+      fontFamily: {
+        def: ["League Spartan", "serif"],
+      },
     },
   },
   plugins: [],
