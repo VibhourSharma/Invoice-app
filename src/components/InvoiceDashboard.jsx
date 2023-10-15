@@ -1,12 +1,11 @@
 import Header from "./Header";
 import InvoiceCard from "./InvoiceCard";
 
-const InvoiceDashboard = ({ data }) => {
-  console.log(data);
+const InvoiceDashboard = () => {
   return (
     <>
       <Header />
-      <InvoiceCard data={data} />
+      <InvoiceCard />
     </>
   );
 };
