@@ -1,8 +1,8 @@
+import { useState } from "react";
 import downIcon from "../../public/assets/icon-arrow-down.svg";
 import plusIcon from "../../public/assets/plus.png";
 import rightArrow from "../../public/assets/icon-arrow-right.svg";
 import checkIcon from "../../public/assets/icon-check.svg";
-import { useState } from "react";
 import data from "../Data";
 
 const InvoiceCard = () => {
@@ -13,15 +13,27 @@ const InvoiceCard = () => {
   };
 
   const [isChecked, setIsChecked] = useState(false);
-  function handleisOpen() {
+  const [selectedFilters, setSelectedFilters] = useState([]);
+
+  function handleOpen() {
     setIsChecked(!isChecked);
   }
 
-  const [filter, setFilter] = useState(null);
-
-  function handleFilter(e) {
-    console.log(e.target.value);
+  function filter(e) {
+    const filterValue = e.target.value;
+    setSelectedFilters((prevFilters) => {
+      if (prevFilters.includes(filterValue)) {
+        return prevFilters.filter((filter) => filter !== filterValue);
+      } else {
+        return [filterValue];
+      }
+    });
   }
+
+  const filteredData =
+    selectedFilters.length === 0
+      ? data
+      : data.filter((invoice) => selectedFilters.includes(invoice.status));
 
   return (
     <div className="dark:bg-[#141625] dark:text-white bg-[#F2F2F2] flex min-h-screen justify-center font-def tracking-tighter">
@@ -30,13 +42,13 @@ const InvoiceCard = () => {
           <div>
             <h1 className="text-4xl font-bold">Invoices</h1>
             <p className="text-base text-slate-500">
-              There are total {data.length} Invoices
+              There are a total {data.length} Invoices
             </p>
           </div>
           <div className="flex items-center justify-between w-72">
             <div
               className="flex items-center text-base font-bold font-def cursor-pointer relative"
-              onClick={handleisOpen}
+              onClick={handleOpen}
             >
               Filter by Status
               <img src={downIcon} alt="icon" className="ml-2" />
@@ -47,8 +59,11 @@ const InvoiceCard = () => {
                   <label className="flex items-center gap-2">
                     <input
                       type="checkbox"
+                      name="draft"
                       className="ml-4 w-4 h-4 cursor-pointer"
-                      onChange={(e) => handleFilter(e)}
+                      onChange={(e) => filter(e)}
+                      checked={selectedFilters.includes("draft")}
+                      value="draft"
                     />
                     Draft
                   </label>
@@ -57,9 +72,11 @@ const InvoiceCard = () => {
                   <label className="flex items-center gap-2">
                     <input
                       type="checkbox"
-                      className="relative ml-4 w-4 h-4 cursor-pointer
-                      "
-                      onChange={(e) => handleFilter(e)}
+                      name="pending"
+                      className="relative ml-4 w-4 h-4 cursor-pointer"
+                      value="pending"
+                      checked={selectedFilters.includes("pending")}
+                      onChange={(e) => filter(e)}
                     />
                     Pending
                   </label>
@@ -68,8 +85,11 @@ const InvoiceCard = () => {
                   <label className="flex items-center gap-2">
                     <input
                       type="checkbox"
+                      name="paid"
                       className="ml-4 w-4 h-4 cursor-pointer"
-                      onChange={(e) => handleFilter(e)}
+                      checked={selectedFilters.includes("paid")}
+                      onChange={(e) => filter(e)}
+                      value="paid"
                     />
                     Paid
                   </label>
@@ -84,8 +104,7 @@ const InvoiceCard = () => {
         </div>
 
         {/* Mapping over the data  */}
-
-        {data.map((d) => (
+        {filteredData.map((d) => (
           <div
             key={d.id}
             className="flex rounded-lg h-24 bg-white mt-4 justify-between dark:bg-[#1E2139] hover:border hover:border-[#7C5DFA] cursor-pointer"
