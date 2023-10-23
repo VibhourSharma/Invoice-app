@@ -1,11 +1,15 @@
-import InvoiceDashboard from "./components/InvoiceDashboard";
-import data from "./Data";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Receipt from "./pages/Receipt";
 
 const App = () => {
   return (
-    <div>
-      <InvoiceDashboard data={data} />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/InvoiceDashboard/receipt/:id" element={<Receipt />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
