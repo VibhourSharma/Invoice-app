@@ -91,7 +91,7 @@ const Receipt = () => {
               <div className="mr-32">
                 <div className="flex flex-col mb-2">
                   <span className="text-slate-500">Bill to</span>
-                  <span className="text-xl font-bold mb-4">
+                  <span className="text-xl font-semibold mb-4">
                     {receiptData.clientName}
                   </span>
                   <span className="text-slate-500">
@@ -110,13 +110,55 @@ const Receipt = () => {
               </div>
               <div className="flex flex-col">
                 <span className="text-slate-500">Sent to</span>
-                <span className="text-xl font-bold">
+                <span className="text-xl font-semibold">
                   {receiptData.clientEmail}
                 </span>
               </div>
             </div>
             {/* part-3 */}
-            <div></div>
+            <div className="w-full px-8 pt-8 mt-8 bg-[#F9FAFE] dark:bg-[#252945] rounded-t-xl">
+              <div className="flex items-center justify-between">
+                <div className="flex flex-col">
+                  <span className="text-slate-500 mb-6">Item Name</span>
+                  {receiptData.items.map((item, index) => (
+                    <span key={index} className="font-bold mb-6">
+                      {item.name}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-slate-500 mb-6">QTY.</span>
+                  {receiptData.items.map((item, index) => (
+                    <span key={index} className="font-bold mb-6">
+                      {item.quantity}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-slate-500 mb-6">Price</span>
+                  {receiptData.items.map((item, index) => (
+                    <span key={index} className="font-bold mb-6">
+                      £ {item.price}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-slate-500 mb-6">Total</span>
+                  {receiptData.items.map((item, index) => (
+                    <span key={index} className="font-bold mb-6">
+                      £ {item.total}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-between w-full p-6 rounded-b-xl bg-[#373B53] text-white dark:bg-[#0C0E16]">
+              <span className="flex items-center justify-center">
+                Amount Due
+              </span>
+              <span className="font-bold text-3xl">£ {receiptData.total}</span>
+            </div>
           </div>
         </div>
       </div>
