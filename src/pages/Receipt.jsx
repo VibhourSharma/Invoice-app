@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import data from "../Data";
 import leftIcon from "../assets/icon-arrow-left.svg";
 console.log(data);
@@ -16,6 +16,11 @@ const Receipt = () => {
     draft: "bg-gray-100 text-black",
   };
 
+  const navigate = useNavigate();
+  function goBack() {
+    navigate(-1);
+  }
+
   return (
     <>
       <Navbar />
@@ -23,7 +28,10 @@ const Receipt = () => {
         <div className="m-20 w-1/2 flex flex-col">
           {/* Go back button */}
 
-          <div className="flex items-center cursor-pointer w-20">
+          <div
+            className="flex items-center cursor-pointer w-20"
+            onClick={goBack}
+          >
             <div className="flex items-center justify-center mr-4">
               <img src={leftIcon} alt="icon" className="w-full" />
             </div>
