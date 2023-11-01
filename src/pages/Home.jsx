@@ -1,11 +1,21 @@
+import { useState } from "react";
 import Navbar from "../components/Navbar";
-import InvoiceCard from "../components/InvoiceCard";
+import InvoiceDashboard from "../components/IncoiceDashboard";
 
 const Home = () => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const handleNewInvoiceClick = () => {
+    setIsDrawerOpen(true);
+  };
+
+  const handleCloseDrawer = () => {
+    setIsDrawerOpen(false);
+  };
   return (
     <>
-      <Navbar />
-      <InvoiceCard />
+      <Navbar isOpen={isDrawerOpen} onClose={handleCloseDrawer} />
+      <InvoiceDashboard handleNewInvoiceClick={handleNewInvoiceClick} />
     </>
   );
 };
