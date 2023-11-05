@@ -5,7 +5,7 @@ import rightArrow from "../assets/icon-arrow-right.svg";
 import data from "../Data";
 import { Link } from "react-router-dom";
 
-const InvoiceDashboard = () => {
+const InvoiceDashboard = ({ handleNewInvoiceClick }) => {
   const statusColors = {
     pending: "bg-orange-50 text-[#ff8f00]",
     paid: "bg-[#e7fff4] text-[#33D69F]",
@@ -93,7 +93,10 @@ const InvoiceDashboard = () => {
                 </div>
               </div>
             )}
-            <button className="bg-[#7C5DFA] text-white flex items-center rounded-r-3xl rounded-l-3xl text-base font-bold p-2 gap-3">
+            <button
+              className="bg-[#7C5DFA] text-white flex items-center rounded-r-3xl rounded-l-3xl text-base font-bold p-2 gap-3"
+              onClick={handleNewInvoiceClick}
+            >
               <img src={plusIcon} alt="plus" className="rounded-full" />
               New Invoice
             </button>
