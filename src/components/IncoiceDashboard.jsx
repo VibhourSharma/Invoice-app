@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import downIcon from "../assets/icon-arrow-down.svg";
 import plusIcon from "../assets/plus.png";
 import rightArrow from "../assets/icon-arrow-right.svg";
@@ -15,9 +15,16 @@ const InvoiceDashboard = ({ handleNewInvoiceClick }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState([]);
 
+  const [allData, setAllData] = useState(data);
+  const [filteredData, setFilteredData] = useState(allData);
+
   function handleOpen() {
     setIsChecked(!isChecked);
   }
+
+  useEffect(() => {
+    sessionStorage.setItem("invoiceData", JSON.stringify(allData));
+  }, [allData]);
 
   function filter(e) {
     const filterValue = e.target.value;
@@ -30,10 +37,14 @@ const InvoiceDashboard = ({ handleNewInvoiceClick }) => {
     });
   }
 
-  const filteredData =
-    selectedFilters.length === 0
-      ? data
-      : data.filter((invoice) => selectedFilters.includes(invoice.status));
+  useEffect(() => {
+    const updatedData =
+      selectedFilters.length === 0
+        ? allData
+        : allData.filter((invoice) => selectedFilters.includes(invoice.status));
+
+    setFilteredData(updatedData);
+  }, [selectedFilters]);
 
   return (
     <div className="dark:bg-[#141625] dark:text-white bg-[#F2F2F2] flex min-h-screen justify-center font-def tracking-tighter">
