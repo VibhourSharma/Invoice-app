@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { useParams, useNavigate } from "react-router-dom";
 import data from "../Data";
@@ -17,9 +18,29 @@ const Receipt = () => {
   };
 
   const navigate = useNavigate();
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [wholeData, setWholeData] = useState(data);
+
   function goBack() {
     navigate(-1);
   }
+
+  const showDeleteConfirmation = () => {
+    setShowDeleteModal(true);
+  };
+
+  const hideDeleteConfirmation = () => {
+    setShowDeleteModal(false);
+  };
+
+  const deleteReceipt = () => {
+    console.log("Deleting receipt with id:", id);
+    const newData = wholeData.filter((item) => item.id !== id);
+    console.log("New data after deletion:", newData);
+    setWholeData(newData);
+    console.log("Receipt deleted!");
+    navigate(-1);
+  };
 
   return (
     <>
@@ -55,7 +76,10 @@ const Receipt = () => {
               <button className="text-[#7C5DFA] bg-slate-50 h-12 w-20 rounded-3xl hover:bg-[#DFE3FA]">
                 Edit
               </button>
-              <button className="text-white bg-red-500 h-12 rounded-3xl w-24 hover:bg-red-400">
+              <button
+                className="text-white bg-red-500 h-12 rounded-3xl w-24 hover:bg-red-400"
+                onClick={showDeleteConfirmation}
+              >
                 Delete
               </button>
               <button className="bg-[#7C5DFA] text-white h-12 w-32 rounded-3xl hover:bg-[#8e72fc]">
@@ -63,6 +87,40 @@ const Receipt = () => {
               </button>
             </div>
           </div>
+
+          {/* Modal Popup */}
+
+          {showDeleteModal && (
+            <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-700 bg-opacity-50">
+              <div className="bg-white rounded-lg flex flex-col p-8">
+                <div className="text-3xl font-semibold mb-4">
+                  <h1>Confirm Deletion</h1>
+                </div>
+                <p className="text-slate-500 text-lg mb-4 max-w-md">
+                  Are you sure you want to delete Invoice #{receiptData.id}?
+                  This action cannot be reversed.
+                </p>
+                <div className="flex gap-2 items-center justify-end">
+                  <div>
+                    <button
+                      className="text-[#7C5DFA] bg-slate-50 h-12 w-20 rounded-3xl hover:bg-[#DFE3FA]"
+                      onClick={hideDeleteConfirmation}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                      className="text-white bg-red-500 h-12 rounded-3xl w-24"
+                      onClick={deleteReceipt}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Description section */}
 
