@@ -1,9 +1,14 @@
-import React from "react";
-
 const Form = ({ onClose }) => {
+  const handleSubmit = (e) => {
+    return e.preventDefault();
+  };
+
   return (
     <>
-      <form action="" className="flex flex-col items-center h-full ml-8">
+      <form
+        action={handleSubmit}
+        className="flex flex-col items-center h-full ml-8"
+      >
         <div className="mt-16">
           <div className="flex items-center mb-6">
             <h5 className="text-[#7C5DFA] font-semibold text-sm outline-none">

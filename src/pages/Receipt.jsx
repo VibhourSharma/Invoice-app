@@ -34,11 +34,8 @@ const Receipt = () => {
   };
 
   const deleteReceipt = () => {
-    console.log("Deleting receipt with id:", id);
     const newData = wholeData.filter((item) => item.id !== id);
-    console.log("New data after deletion:", newData);
     setWholeData(newData);
-    console.log("Receipt deleted!");
     navigate(-1);
   };
 

@@ -5,8 +5,10 @@ import profile from "../assets/image-avatar.jpg";
 import "./../Index.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import InvoiceFormDrawer from "../components/InvoiceFormDrawer";
+import Backdrop from "./Backdrop";
 
-const Navbar = () => {
+const Navbar = ({ isOpen, onClose }) => {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
@@ -23,6 +25,7 @@ const Navbar = () => {
 
   return (
     <div className="flex relative">
+      <InvoiceFormDrawer isOpen={isOpen} onClose={onClose} />
       <Link>
         <div className="fixed h-full bg-sidebar rounded-t-3xl rounded-br-3xl">
           <div>
