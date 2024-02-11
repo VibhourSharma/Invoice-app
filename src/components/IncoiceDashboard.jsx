@@ -4,16 +4,26 @@ import data from "../Data";
 import InvoiceFilter from "./InvoiceFilter";
 import InvoiceList from "./InvoiceList";
 
+const statusColors = {
+  pending: "bg-orange-50 text-[#ff8f00]",
+  paid: "bg-[#e7fff4] text-[#33D69F]",
+  draft: "bg-gray-100 text-black",
+};
+
 const InvoiceDashboard = ({ handleNewInvoiceClick }) => {
-  const statusColors = {
-    pending: "bg-orange-50 text-[#ff8f00]",
-    paid: "bg-[#e7fff4] text-[#33D69F]",
-    draft: "bg-gray-100 text-black",
-  };
+  const [initialValue, setInitialValue] = useState([]);
+
+  useEffect(() => {
+    const storedInvoices = JSON.parse(localStorage.getItem("invoices")) || data;
+    localStorage.setItem("invoices", JSON.stringify(storedInvoices));
+    console.log(storedInvoices);
+    setInitialValue(storedInvoices);
+    setFilteredData(storedInvoices);
+  }, []);
 
   const [isChecked, setIsChecked] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState([]);
-  const [filteredData, setFilteredData] = useState(data);
+  const [filteredData, setFilteredData] = useState([]);
 
   const toggleCheckbox = () => setIsChecked(!isChecked);
 
@@ -29,18 +39,16 @@ const InvoiceDashboard = ({ handleNewInvoiceClick }) => {
   useEffect(() => {
     const updatedData =
       selectedFilters.length === 0
-        ? data
-        : data.filter((invoice) => selectedFilters.includes(invoice.status));
+        ? JSON.parse(localStorage.getItem("invoices")) || data
+        : initialValue.filter((invoice) =>
+            selectedFilters.includes(invoice.status)
+          );
 
     setFilteredData(updatedData);
   }, [selectedFilters]);
 
-  useEffect(() => {
-    sessionStorage.setItem("invoiceData", JSON.stringify(data));
-  }, []);
-
   return (
-    <div className="dark:bg-[#141625] dark:text-white bg-[#F2F2F2] flex min-h-screen justify-center font-def tracking-tighter">
+    <div className="dark:bg-[#141625] dark:text-white bg-[#F2F2F2] flex min-h-screen justify-center tracking-tighter">
       <div className="m-20 w-1/2">
         <div className="flex justify-between mb-16">
           <div>
