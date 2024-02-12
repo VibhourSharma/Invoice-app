@@ -34,16 +34,13 @@ const BillTo = ({ onChange }) => {
         />
       </div>
       <div className="flex flex-col">
-        <label
-          htmlFor="clientStreetAddress"
-          className="text-slate-500 text-sm mb-2"
-        >
+        <label htmlFor="clientStreet" className="text-slate-500 text-sm mb-2">
           Street Address
         </label>
         <input
           type="text"
-          id="clientStreetAddress"
-          name="clientStreetAddress"
+          id="clientStreet"
+          name="clientAddress.street"
           className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none"
           onChange={onChange}
         />
@@ -56,7 +53,7 @@ const BillTo = ({ onChange }) => {
           <input
             type="text"
             id="clientCity"
-            name="clientCity"
+            name="clientAddress.city"
             className="border rounded-md p-2 w-[8rem] my-2 focus:outline-none"
             onChange={onChange}
           />
@@ -68,7 +65,7 @@ const BillTo = ({ onChange }) => {
           <input
             type="number"
             id="clientPostCode"
-            name="clientPostCode"
+            name="clientAddress.postCode"
             className="border rounded-md p-2 w-[8rem] my-2 focus:outline-none"
             onChange={onChange}
           />
@@ -80,7 +77,7 @@ const BillTo = ({ onChange }) => {
           <input
             type="text"
             id="clientCountry"
-            name="clientCountry"
+            name="clientAddress.country"
             className="border rounded-md p-2 w-[12rem] my-2 focus:outline-none"
             onChange={onChange}
           />

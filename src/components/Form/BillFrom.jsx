@@ -9,50 +9,50 @@ const BillFrom = ({ onChange }) => {
         </h5>
       </div>
       <div className="flex flex-col">
-        <label htmlFor="streetAddress" className="text-slate-500 text-sm mb-2">
+        <label htmlFor="senderAddress" className="text-slate-500 text-sm mb-2">
           Street Address
         </label>
         <input
           type="text"
-          id="streetAddress"
-          name="streetAddress"
+          id="senderStreet"
+          name="senderAddress.street"
           className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none"
           onChange={onChange}
         />
       </div>
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-col">
-          <label htmlFor="city" className="text-slate-500 text-sm">
+          <label htmlFor="senderCity" className="text-slate-500 text-sm">
             City
           </label>
           <input
             type="text"
-            id="city"
-            name="city"
+            id="senderCity"
+            name="senderAddress.city"
             className="border rounded-md p-2 w-[8rem] my-2 focus:outline-none"
             onChange={onChange}
           />
         </div>
         <div className="flex flex-col">
-          <label htmlFor="postCode" className="text-slate-500 text-sm">
+          <label htmlFor="senderPostCode" className="text-slate-500 text-sm">
             Post Code
           </label>
           <input
             type="number"
-            id="postCode"
-            name="postCode"
+            id="sendePpostCode"
+            name="senderAddress.postCode"
             className="border rounded-md p-2 w-[8rem] my-2 focus:outline-none"
             onChange={onChange}
           />
         </div>
         <div className="flex flex-col">
-          <label htmlFor="country" className="text-slate-500 text-sm">
+          <label htmlFor="senderCountry" className="text-slate-500 text-sm">
             Country
           </label>
           <input
             type="text"
-            id="country"
-            name="country"
+            id="senderCountry"
+            name="senderAddress.country"
             className="border rounded-md p-2 w-[12rem] my-2 focus:outline-none"
             onChange={onChange}
           />
