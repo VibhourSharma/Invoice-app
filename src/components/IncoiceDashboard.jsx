@@ -12,14 +12,14 @@ const statusColors = {
 
 const InvoiceDashboard = ({ handleNewInvoiceClick }) => {
   const [initialValue, setInitialValue] = useState([]);
+  const locallySavedInvoices =
+    JSON.parse(localStorage.getItem("invoices")) || data;
 
   useEffect(() => {
-    const storedInvoices = JSON.parse(localStorage.getItem("invoices")) || data;
-    localStorage.setItem("invoices", JSON.stringify(storedInvoices));
-    console.log(storedInvoices);
-    setInitialValue(storedInvoices);
-    setFilteredData(storedInvoices);
-  }, []);
+    localStorage.setItem("invoices", JSON.stringify(locallySavedInvoices));
+    setInitialValue(locallySavedInvoices);
+    setFilteredData(locallySavedInvoices);
+  }, [locallySavedInvoices.length]);
 
   const [isChecked, setIsChecked] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -32,14 +32,14 @@ const InvoiceDashboard = ({ handleNewInvoiceClick }) => {
     setSelectedFilters((prevFilters) =>
       prevFilters.includes(filterValue)
         ? prevFilters.filter((filter) => filter !== filterValue)
-        : [...prevFilters, filterValue]
+        : [filterValue]
     );
   };
 
   useEffect(() => {
     const updatedData =
       selectedFilters.length === 0
-        ? JSON.parse(localStorage.getItem("invoices")) || data
+        ? locallySavedInvoices
         : initialValue.filter((invoice) =>
             selectedFilters.includes(invoice.status)
           );
