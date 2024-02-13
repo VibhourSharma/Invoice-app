@@ -29,12 +29,12 @@ const Form = ({ onClose }) => {
     items: [
       {
         name: "",
-        quantity: 0,
-        price: 0,
-        total: 0,
+        quantity: 0.0,
+        price: 0.0,
+        total: 0.0,
       },
     ],
-    total: 0,
+    total: 0.0,
   };
 
   const [formData, setFormData] = useState(defaultValue);
@@ -74,7 +74,7 @@ const Form = ({ onClose }) => {
     const status = "pending";
     const formDataWithID = { ...formData, id, createdAt, status };
     const existingInvoices = JSON.parse(localStorage.getItem("invoices")) || [];
-    const updatedInvoices = [...existingInvoices, formDataWithID];
+    const updatedInvoices = [formDataWithID, ...existingInvoices];
     localStorage.setItem("invoices", JSON.stringify(updatedInvoices));
     setFormData(defaultValue);
     onClose();
@@ -99,7 +99,11 @@ const Form = ({ onClose }) => {
         <BillFrom onChange={handleChange} />
         <BillTo onChange={handleChange} />
         <AdditionalInfo onChange={handleChange} />
-        <ItemList formData={formData} setFormData={setFormData} />
+        <ItemList
+          formData={formData}
+          setFormData={setFormData}
+          onChange={handleChange}
+        />
 
         {/* Button section  */}
         <div className="flex w-[34rem] justify-between py-8">
