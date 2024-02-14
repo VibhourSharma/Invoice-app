@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { useParams, useNavigate } from "react-router-dom";
 import data from "../Data";
@@ -61,7 +61,6 @@ const Receipt = () => {
           statusColors={statusColors}
           goBack={goBack}
           showDeleteConfirmation={showDeleteConfirmation}
-          // isPaid={isPaid}
           markAsPaid={markAsPaid}
         />
       )}
