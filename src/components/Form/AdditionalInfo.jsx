@@ -1,6 +1,3 @@
-import React from "react";
-import { useState } from "react";
-
 const AdditionalInfo = ({ onChange }) => {
   return (
     <div className="mt-12">
@@ -22,17 +19,16 @@ const AdditionalInfo = ({ onChange }) => {
           Payment Terms
         </label>
         <select
-          // defaultValue="Select..."
           name="paymentTerms"
           placeholder="Select..."
           id="paymentTerms"
-          className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none"
+          className="border rounded-md px-2 py-3.5 mt-2 my-6 w-[34rem] focus:outline-none text-bold"
           onChange={onChange}
         >
-          {/* <option value="">Select...</option> */}
-          <option value="1">Option 1</option>
-          <option value="3">Option 2</option>
-          <option value="7">Option 3</option>
+          <option value="1">Next 1 Day</option>
+          <option value="7">Next 7 Days</option>
+          <option value="14">Next 14 Days</option>
+          <option value="30">Next 30 Days</option>
         </select>
       </div>
       <div className="flex flex-col">
