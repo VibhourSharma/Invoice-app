@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { useParams, useNavigate } from "react-router-dom";
 import data from "../Data";
@@ -7,7 +7,10 @@ import ReceiptLayout from "../components/ReceiptLayout";
 
 const Receipt = () => {
   const { id } = useParams();
-  const receiptData = data.find((item) => item.id === id);
+  const [wholeData, setWholeData] = useState(
+    JSON.parse(localStorage.getItem("invoices")) || data
+  );
+  const receiptData = wholeData.find((item) => item.id === id);
 
   const statusColors = {
     pending: "bg-orange-50 text-[#ff8f00]",
@@ -16,12 +19,11 @@ const Receipt = () => {
   };
 
   const navigate = useNavigate();
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [wholeData, setWholeData] = useState(data);
-
   const goBack = () => {
     navigate(-1);
   };
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const showDeleteConfirmation = () => {
     setShowDeleteModal(true);
@@ -33,19 +35,36 @@ const Receipt = () => {
 
   const deleteReceipt = () => {
     const newData = wholeData.filter((item) => item.id !== id);
+    localStorage.setItem("invoices", JSON.stringify(newData));
     setWholeData(newData);
     navigate(-1);
+  };
+
+  const markAsPaid = () => {
+    const newStatus = "paid";
+    receiptData.status = newStatus;
+
+    const updatedStatusData = wholeData.map((statusData) =>
+      statusData.id === id ? receiptData : statusData
+    );
+    console.log(updatedStatusData);
+    localStorage.setItem("invoices", JSON.stringify(updatedStatusData));
+    setWholeData(updatedStatusData);
   };
 
   return (
     <>
       <Navbar />
-      <ReceiptLayout
-        receiptData={receiptData}
-        statusColors={statusColors}
-        goBack={goBack}
-        showDeleteConfirmation={showDeleteConfirmation}
-      />
+      {receiptData && (
+        <ReceiptLayout
+          receiptData={receiptData}
+          statusColors={statusColors}
+          goBack={goBack}
+          showDeleteConfirmation={showDeleteConfirmation}
+          // isPaid={isPaid}
+          markAsPaid={markAsPaid}
+        />
+      )}
       {showDeleteModal && (
         <DeleteConfirmationModal
           receiptData={receiptData}
