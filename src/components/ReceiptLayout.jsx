@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import leftIcon from "../assets/icon-arrow-left.svg";
 
 const ReceiptLayout = ({
   receiptData,
+  handleEditClick,
   statusColors,
   goBack,
   showDeleteConfirmation,
@@ -15,6 +16,8 @@ const ReceiptLayout = ({
     });
     return total;
   };
+
+  console.log(receiptData.status);
 
   return (
     <div className="dark:bg-[#141625] dark:text-white bg-[#F2F2F2] flex min-h-screen justify-center tracking-tighter">
@@ -37,9 +40,14 @@ const ReceiptLayout = ({
             </div>
           </div>
           <div className="flex items-center justify-center gap-2 font-semibold text-sm">
-            <button className="text-[#7C5DFA] bg-slate-50 h-12 w-20 rounded-3xl hover:bg-[#DFE3FA]">
-              Edit
-            </button>
+            <div>
+              <button
+                className="text-[#7C5DFA] bg-slate-50 h-12 w-20 rounded-3xl hover:bg-[#DFE3FA]"
+                onClick={handleEditClick}
+              >
+                Edit
+              </button>
+            </div>
             <button
               className="text-white bg-red-500 h-12 rounded-3xl w-24 hover:bg-red-400"
               onClick={showDeleteConfirmation}

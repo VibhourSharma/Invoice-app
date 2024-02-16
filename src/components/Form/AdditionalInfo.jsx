@@ -1,4 +1,4 @@
-const AdditionalInfo = ({ onChange }) => {
+const AdditionalInfo = ({ onChange, formData }) => {
   return (
     <div className="mt-12">
       <div className="flex flex-col">
@@ -12,6 +12,7 @@ const AdditionalInfo = ({ onChange }) => {
           className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none"
           placeholder="e.g. email@xyz.com"
           onChange={onChange}
+          value={formData.paymentDue}
         />
       </div>
       <div className="flex flex-col">
@@ -24,6 +25,7 @@ const AdditionalInfo = ({ onChange }) => {
           id="paymentTerms"
           className="border rounded-md px-2 py-3.5 mt-2 my-6 w-[34rem] focus:outline-none text-bold"
           onChange={onChange}
+          value={formData.paymentTerms}
         >
           <option value="1">Next 1 Day</option>
           <option value="7">Next 7 Days</option>
@@ -42,6 +44,7 @@ const AdditionalInfo = ({ onChange }) => {
           className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none"
           placeholder="e.g. Graphic Design Service"
           onChange={onChange}
+          value={formData.description}
         />
       </div>
     </div>

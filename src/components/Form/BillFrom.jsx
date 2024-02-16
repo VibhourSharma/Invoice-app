@@ -1,6 +1,6 @@
 import React from "react";
 
-const BillFrom = ({ onChange }) => {
+const BillFrom = ({ onChange, formData }) => {
   return (
     <div className="mt-16">
       <div className="flex items-center mb-6">
@@ -18,6 +18,7 @@ const BillFrom = ({ onChange }) => {
           name="senderAddress.street"
           className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none"
           onChange={onChange}
+          value={formData.senderAddress.street}
         />
       </div>
       <div className="flex flex-row items-center justify-between">
@@ -31,6 +32,7 @@ const BillFrom = ({ onChange }) => {
             name="senderAddress.city"
             className="border rounded-md p-2 w-[8rem] my-2 focus:outline-none"
             onChange={onChange}
+            value={formData.senderAddress.city}
           />
         </div>
         <div className="flex flex-col">
@@ -38,11 +40,12 @@ const BillFrom = ({ onChange }) => {
             Post Code
           </label>
           <input
-            type="number"
-            id="sendePpostCode"
+            type="text"
+            id="sendePostCode"
             name="senderAddress.postCode"
             className="border rounded-md p-2 w-[8rem] my-2 focus:outline-none"
             onChange={onChange}
+            value={formData.senderAddress.postCode}
           />
         </div>
         <div className="flex flex-col">
@@ -55,6 +58,7 @@ const BillFrom = ({ onChange }) => {
             name="senderAddress.country"
             className="border rounded-md p-2 w-[12rem] my-2 focus:outline-none"
             onChange={onChange}
+            value={formData.senderAddress.country}
           />
         </div>
       </div>

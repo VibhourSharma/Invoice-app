@@ -1,14 +1,13 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { useParams, useNavigate } from "react-router-dom";
-import data from "../Data";
 import DeleteConfirmationModal from "../components/DeleteConfirmationModal";
 import ReceiptLayout from "../components/ReceiptLayout";
 
 const Receipt = () => {
   const { id } = useParams();
   const [wholeData, setWholeData] = useState(
-    JSON.parse(localStorage.getItem("invoices")) || data
+    JSON.parse(localStorage.getItem("invoices"))
   );
   const receiptData = wholeData.find((item) => item.id === id);
 
@@ -21,6 +20,16 @@ const Receipt = () => {
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
+  };
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const handleNewInvoiceClick = () => {
+    setIsDrawerOpen(true);
+  };
+
+  const handleCloseDrawer = () => {
+    setIsDrawerOpen(false);
   };
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -36,7 +45,6 @@ const Receipt = () => {
   const deleteReceipt = () => {
     const newData = wholeData.filter((item) => item.id !== id);
     localStorage.setItem("invoices", JSON.stringify(newData));
-    setWholeData(newData);
     navigate(-1);
   };
 
@@ -54,7 +62,11 @@ const Receipt = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar
+        isOpen={isDrawerOpen}
+        onClose={handleCloseDrawer}
+        receiptData={receiptData}
+      />
       {receiptData && (
         <ReceiptLayout
           receiptData={receiptData}
@@ -62,6 +74,7 @@ const Receipt = () => {
           goBack={goBack}
           showDeleteConfirmation={showDeleteConfirmation}
           markAsPaid={markAsPaid}
+          handleEditClick={handleNewInvoiceClick}
         />
       )}
       {showDeleteModal && (

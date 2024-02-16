@@ -1,6 +1,6 @@
 import React from "react";
 
-const BillTo = ({ onChange }) => {
+const BillTo = ({ onChange, formData }) => {
   return (
     <div className="mt-12">
       <div className="flex items-center mb-6">
@@ -18,6 +18,7 @@ const BillTo = ({ onChange }) => {
           name="clientName"
           className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none"
           onChange={onChange}
+          value={formData.clientName}
         />
       </div>
       <div className="flex flex-col">
@@ -31,6 +32,7 @@ const BillTo = ({ onChange }) => {
           className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none"
           placeholder="e.g. email@xyz.com"
           onChange={onChange}
+          value={formData.clientEmail}
         />
       </div>
       <div className="flex flex-col">
@@ -43,6 +45,7 @@ const BillTo = ({ onChange }) => {
           name="clientAddress.street"
           className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none"
           onChange={onChange}
+          value={formData.clientAddress.street}
         />
       </div>
       <div className="flex flex-row items-center justify-between">
@@ -56,6 +59,7 @@ const BillTo = ({ onChange }) => {
             name="clientAddress.city"
             className="border rounded-md p-2 w-[8rem] my-2 focus:outline-none"
             onChange={onChange}
+            value={formData.clientAddress.city}
           />
         </div>
         <div className="flex flex-col">
@@ -63,11 +67,12 @@ const BillTo = ({ onChange }) => {
             Post Code
           </label>
           <input
-            type="number"
+            type="text"
             id="clientPostCode"
             name="clientAddress.postCode"
             className="border rounded-md p-2 w-[8rem] my-2 focus:outline-none"
             onChange={onChange}
+            value={formData.clientAddress.postCode}
           />
         </div>
         <div className="flex flex-col">
@@ -80,6 +85,7 @@ const BillTo = ({ onChange }) => {
             name="clientAddress.country"
             className="border rounded-md p-2 w-[12rem] my-2 focus:outline-none"
             onChange={onChange}
+            value={formData.clientAddress.country}
           />
         </div>
       </div>
