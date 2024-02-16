@@ -3,6 +3,7 @@ import plusIcon from "../assets/plus.png";
 import data from "../Data";
 import InvoiceFilter from "./InvoiceFilter";
 import InvoiceList from "./InvoiceList";
+import emptyList from "../assets/illustration-empty.svg";
 
 const statusColors = {
   pending: "bg-orange-50 text-[#ff8f00]",
@@ -74,7 +75,21 @@ const InvoiceDashboard = ({ handleNewInvoiceClick }) => {
             </button>
           </div>
         </div>
-        <InvoiceList filteredData={filteredData} statusColors={statusColors} />
+        {filteredData.length === 0 ? (
+          <div className="w-full flex flex-col items-center justify-center max-h-screen">
+            <img src={emptyList} alt="No Invoices To Show!" />
+            <p className="mt-12 text-2xl font-bold">There is nothing here</p>
+            <p className="w-56 mt-4 text-center leading-4">
+              Create an invoice by clicking the New Invoice button and get
+              started
+            </p>
+          </div>
+        ) : (
+          <InvoiceList
+            filteredData={filteredData}
+            statusColors={statusColors}
+          />
+        )}
       </div>
     </div>
   );

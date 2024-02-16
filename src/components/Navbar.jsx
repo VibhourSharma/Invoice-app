@@ -6,7 +6,7 @@ import sun from "../assets/icon-sun.svg";
 import profile from "../assets/image-avatar.jpg";
 import "./../Index.css";
 
-const Navbar = ({ isOpen, onClose }) => {
+const Navbar = ({ isOpen, onClose, receiptData }) => {
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
     return savedTheme || "light";
@@ -25,7 +25,13 @@ const Navbar = ({ isOpen, onClose }) => {
 
   return (
     <div className="flex relative">
-      <FormDrawer isOpen={isOpen} onClose={onClose} />
+      {isOpen && (
+        <FormDrawer
+          isOpen={isOpen}
+          onClose={onClose}
+          receiptData={receiptData}
+        />
+      )}
       <div className="fixed h-full bg-sidebar rounded-t-3xl rounded-br-3xl">
         <div>
           <img src={logo} alt="app-logo" />

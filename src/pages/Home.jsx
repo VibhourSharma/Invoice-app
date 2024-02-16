@@ -12,6 +12,7 @@ const Home = () => {
   const handleCloseDrawer = () => {
     setIsDrawerOpen(false);
   };
+
   return (
     <>
       <Navbar isOpen={isDrawerOpen} onClose={handleCloseDrawer} />
