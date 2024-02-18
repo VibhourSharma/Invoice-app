@@ -81,7 +81,7 @@ const Form = ({ onClose, receiptData }) => {
     onClose();
   };
 
-  const handleSave = (e) => {
+  const handleSaveAndSend = (e) => {
     handleAction(e, "pending");
   };
 
@@ -92,6 +92,28 @@ const Form = ({ onClose, receiptData }) => {
   const handleDiscard = (e) => {
     e.preventDefault();
     setFormData(defaultValue);
+    onClose();
+  };
+
+  const handleSaveChanges = (e) => {
+    e.preventDefault();
+    const id = formData.id;
+    const createdAt = formData.createdAt;
+
+    const updatedInvoice = {
+      ...formData,
+      id,
+      createdAt,
+    };
+
+    const existingInvoices = JSON.parse(localStorage.getItem("invoices")) || [];
+
+    const index = existingInvoices.findIndex((invoice) => invoice.id === id);
+
+    if (index !== -1) {
+      existingInvoices[index] = updatedInvoice;
+      localStorage.setItem("invoices", JSON.stringify(existingInvoices));
+    }
     onClose();
   };
 
@@ -107,31 +129,49 @@ const Form = ({ onClose, receiptData }) => {
           onChange={handleChange}
         />
 
-        <div className="flex w-[34rem] justify-between py-8">
-          <div className="flex items-center">
-            <button
-              className="text-[#7E88C3] font-semibold h-12 w-24 rounded-3xl bg-[#F2F2F2] text-sm"
-              onClick={handleDiscard}
-            >
-              Discard
-            </button>
+        {!receiptData ? (
+          <div className="flex w-[34rem] justify-between py-8">
+            <div className="flex items-center">
+              <button
+                className="text-[#7E88C3] font-semibold h-12 w-24 rounded-3xl bg-[#F2F2F2] text-sm"
+                onClick={handleDiscard}
+              >
+                Discard
+              </button>
+            </div>
+            <div className="flex items-center justify-between w-[17rem]">
+              <button
+                onClick={handleDraft}
+                className="bg-[#373B53] w-32 h-12 rounded-3xl text-[#7E88C3] text-sm font-bold"
+              >
+                Save as Draft
+              </button>
+              <button
+                type="submit"
+                className="bg-[#7C5DFA] text-white h-12 w-32 rounded-3xl hover:bg-[#8e72fc] text-sm font-semibold"
+                onClick={handleSaveAndSend}
+              >
+                Save & Send
+              </button>
+            </div>
           </div>
-          <div className="flex items-center justify-between w-[17rem]">
+        ) : (
+          <div className="flex w-[34rem] gap-4 justify-end items-center py-8">
             <button
-              onClick={handleDraft}
+              onClick={handleDiscard}
               className="bg-[#373B53] w-32 h-12 rounded-3xl text-[#7E88C3] text-sm font-bold"
             >
-              Save as Draft
+              Cancel
             </button>
             <button
               type="submit"
               className="bg-[#7C5DFA] text-white h-12 w-32 rounded-3xl hover:bg-[#8e72fc] text-sm font-semibold"
-              onClick={handleSave}
+              onClick={handleSaveChanges}
             >
-              Save & Send
+              Save Changes
             </button>
           </div>
-        </div>
+        )}
       </form>
     </>
   );
