@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "./Form/Form";
 
-const FormDrawer = ({ isOpen, onClose, receiptData }) => {
+const FormDrawer = ({ isOpen, onClose, receiptData, setWholeData }) => {
   const backdropStyle = {
     display: isOpen ? "block" : "none",
     position: "fixed",
@@ -25,7 +25,11 @@ const FormDrawer = ({ isOpen, onClose, receiptData }) => {
         className="fixed top-0 left-0 w-[40rem] h-full bg-white ease-in-out delay-200 duration-300 shadow-2xl ml-24 rounded-r-3xl"
         style={drawerStyle}
       >
-        <Form onClose={onClose} receiptData={receiptData} />
+        <Form
+          onClose={onClose}
+          receiptData={receiptData}
+          setWholeData={setWholeData}
+        />
       </div>
     </>
   );

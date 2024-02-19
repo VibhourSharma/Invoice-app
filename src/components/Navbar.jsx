@@ -6,7 +6,7 @@ import sun from "../assets/icon-sun.svg";
 import profile from "../assets/image-avatar.jpg";
 import "./../Index.css";
 
-const Navbar = ({ isOpen, onClose, receiptData }) => {
+const Navbar = ({ isOpen, onClose, receiptData, setWholeData }) => {
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
     return savedTheme || "light";
@@ -30,6 +30,7 @@ const Navbar = ({ isOpen, onClose, receiptData }) => {
           isOpen={isOpen}
           onClose={onClose}
           receiptData={receiptData}
+          setWholeData={setWholeData}
         />
       )}
       <div className="fixed h-full bg-sidebar rounded-t-3xl rounded-br-3xl">

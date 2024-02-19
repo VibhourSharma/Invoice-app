@@ -9,6 +9,8 @@ const Receipt = () => {
   const [wholeData, setWholeData] = useState(
     JSON.parse(localStorage.getItem("invoices"))
   );
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const receiptData = wholeData.find((item) => item.id === id);
 
   const statusColors = {
@@ -22,8 +24,6 @@ const Receipt = () => {
     navigate(-1);
   };
 
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
   const handleNewInvoiceClick = () => {
     setIsDrawerOpen(true);
   };
@@ -31,8 +31,6 @@ const Receipt = () => {
   const handleCloseDrawer = () => {
     setIsDrawerOpen(false);
   };
-
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const showDeleteConfirmation = () => {
     setShowDeleteModal(true);
@@ -51,11 +49,9 @@ const Receipt = () => {
   const markAsPaid = () => {
     const newStatus = "paid";
     receiptData.status = newStatus;
-
     const updatedStatusData = wholeData.map((statusData) =>
       statusData.id === id ? receiptData : statusData
     );
-    console.log(updatedStatusData);
     localStorage.setItem("invoices", JSON.stringify(updatedStatusData));
     setWholeData(updatedStatusData);
   };
@@ -66,6 +62,7 @@ const Receipt = () => {
         isOpen={isDrawerOpen}
         onClose={handleCloseDrawer}
         receiptData={receiptData}
+        setWholeData={setWholeData}
       />
       {receiptData && (
         <ReceiptLayout

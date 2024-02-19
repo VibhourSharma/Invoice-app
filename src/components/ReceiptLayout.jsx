@@ -17,8 +17,6 @@ const ReceiptLayout = ({
     return total;
   };
 
-  console.log(receiptData.status);
-
   return (
     <div className="dark:bg-[#141625] dark:text-white bg-[#F2F2F2] flex min-h-screen justify-center tracking-tighter">
       <div className="m-20 w-1/2 flex flex-col">

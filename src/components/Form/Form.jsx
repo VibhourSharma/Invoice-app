@@ -45,9 +45,7 @@ const defaultValue = {
   total: 0.0,
 };
 
-const Form = ({ onClose, receiptData }) => {
-  console.log(receiptData);
-
+const Form = ({ onClose, receiptData, setWholeData }) => {
   const [formData, setFormData] = useState(receiptData || defaultValue);
 
   const handleChange = (e) => {
@@ -97,23 +95,16 @@ const Form = ({ onClose, receiptData }) => {
 
   const handleSaveChanges = (e) => {
     e.preventDefault();
-    const id = formData.id;
-    const createdAt = formData.createdAt;
-
-    const updatedInvoice = {
-      ...formData,
-      id,
-      createdAt,
-    };
+    const { id } = formData;
+    const updatedInvoice = { ...formData };
 
     const existingInvoices = JSON.parse(localStorage.getItem("invoices")) || [];
 
     const index = existingInvoices.findIndex((invoice) => invoice.id === id);
 
-    if (index !== -1) {
-      existingInvoices[index] = updatedInvoice;
-      localStorage.setItem("invoices", JSON.stringify(existingInvoices));
-    }
+    existingInvoices[index] = updatedInvoice;
+    localStorage.setItem("invoices", JSON.stringify(existingInvoices));
+    setWholeData(existingInvoices);
     onClose();
   };
 
