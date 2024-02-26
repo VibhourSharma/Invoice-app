@@ -24,7 +24,7 @@ const Navbar = ({ isOpen, onClose, receiptData, setWholeData }) => {
   const themeIcon = theme === "dark" ? sun : moon;
 
   return (
-    <div className="flex relative">
+    <>
       {isOpen && (
         <FormDrawer
           isOpen={isOpen}
@@ -33,24 +33,25 @@ const Navbar = ({ isOpen, onClose, receiptData, setWholeData }) => {
           setWholeData={setWholeData}
         />
       )}
-      <div className="fixed h-full bg-sidebar rounded-t-3xl rounded-br-3xl">
-        <div>
-          <img src={logo} alt="app-logo" />
-        </div>
-        <div className="absolute bottom-32 w-full flex justify-center">
+      <div className="fixed top-0 bottom-0 mobile:relative h-full bg-sidebar rounded-t-3xl rounded-br-3xl mobile:flex mobile:justify-between mobile:rounded-none">
+        <img src={logo} alt="app-logo" className="relative" />
+        <div className="flex items-center justify-center mobile:w-32">
           <img
             src={themeIcon}
             alt="dark-mode"
-            className="cursor-pointer p-1"
+            className="cursor-pointer p-1 absolute bottom-32 left-9 flex justify-center mobile:relative mobile:bottom-0"
             onClick={toggleTheme}
           />
-        </div>
-        <div className="w-full h-px bg-slate-400 absolute bottom-24"></div>
-        <div className="w-full flex justify-center absolute bottom-0 py-6">
-          <img src={profile} alt="profile" className="rounded-full h-11" />
+          <div className="w-full h-px bg-slate-400 absolute bottom-24 mobile:hidden"></div>
+
+          <img
+            src={profile}
+            alt="profile"
+            className="rounded-full h-11 absolute bottom-6 left-7 mobile:hidden"
+          />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

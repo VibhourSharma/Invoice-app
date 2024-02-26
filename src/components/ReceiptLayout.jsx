@@ -19,7 +19,7 @@ const ReceiptLayout = ({
 
   return (
     <div className="dark:bg-[#141625] dark:text-white bg-[#F2F2F2] flex min-h-screen justify-center tracking-tighter">
-      <div className="m-20 w-1/2 flex flex-col">
+      <div className="m-20 w-1/2 flex flex-col mobile:w-[95%] mobile:m-8 mobile:text-sm">
         <div className="flex items-center cursor-pointer w-20" onClick={goBack}>
           <div className="flex items-center justify-center mr-4">
             <img src={leftIcon} alt="icon" className="w-full" />

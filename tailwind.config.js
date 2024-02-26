@@ -8,6 +8,9 @@ export default {
         sidebar: "#373B53",
       },
     },
+    screens: {
+      mobile: { max: "720px" },
+    },
   },
   plugins: [],
 };

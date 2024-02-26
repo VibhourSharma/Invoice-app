@@ -17,7 +17,7 @@ const InvoiceList = ({ statusColors, filteredData }) => {
         return (
           <Link to={`/receipt/${invoice.id}`} key={invoice.id}>
             <div className="flex rounded-lg h-24 bg-white mt-4 justify-between dark:bg-[#1E2139] hover:border hover:border-[#7C5DFA] cursor-pointer">
-              <div className="flex items-center">
+              <div className="flex justify-center items-center">
                 <span className="font-bold mr-12 ml-8">
                   <span className="text-slate-500">#</span>
                   {invoice.id}

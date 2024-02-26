@@ -49,8 +49,8 @@ const InvoiceDashboard = ({ handleNewInvoiceClick }) => {
   }, [selectedFilters]);
 
   return (
-    <div className="dark:bg-[#141625] dark:text-white bg-[#F2F2F2] flex min-h-screen justify-center tracking-tighter">
-      <div className="m-20 w-1/2">
+    <div className="dark:bg-[#141625] dark:text-white bg-[#F2F2F2] flex min-h-screen justify-center tracking-tighter mobile:text-sm">
+      <div className="m-20 mobile:m-8">
         <div className="flex justify-between mb-16">
           <div>
             <h1 className="text-4xl font-bold">Invoices</h1>
