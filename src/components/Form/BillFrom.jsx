@@ -2,7 +2,7 @@ import React from "react";
 
 const BillFrom = ({ onChange, formData }) => {
   return (
-    <div className="mt-16">
+    <div className="mt-16 mobile:w-[90%]">
       <div className="flex items-center mb-6">
         <h5 className="text-[#7C5DFA] font-semibold text-sm outline-none">
           Bill from
@@ -16,7 +16,7 @@ const BillFrom = ({ onChange, formData }) => {
           type="text"
           id="senderStreet"
           name="senderAddress.street"
-          className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none"
+          className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none mobile:w-full"
           onChange={onChange}
           value={formData.senderAddress.street}
         />
@@ -30,7 +30,7 @@ const BillFrom = ({ onChange, formData }) => {
             type="text"
             id="senderCity"
             name="senderAddress.city"
-            className="border rounded-md p-2 w-[8rem] my-2 focus:outline-none"
+            className="border rounded-md p-2 w-[8rem] my-2 focus:outline-none mobile:w-[6rem]"
             onChange={onChange}
             value={formData.senderAddress.city}
           />
@@ -43,7 +43,7 @@ const BillFrom = ({ onChange, formData }) => {
             type="text"
             id="sendePostCode"
             name="senderAddress.postCode"
-            className="border rounded-md p-2 w-[8rem] my-2 focus:outline-none"
+            className="border rounded-md p-2 w-[8rem] my-2 focus:outline-none mobile:w-[6rem]"
             onChange={onChange}
             value={formData.senderAddress.postCode}
           />
@@ -56,7 +56,7 @@ const BillFrom = ({ onChange, formData }) => {
             type="text"
             id="senderCountry"
             name="senderAddress.country"
-            className="border rounded-md p-2 w-[12rem] my-2 focus:outline-none"
+            className="border rounded-md p-2 w-[12rem] my-2 focus:outline-none mobile:w-[7rem]"
             onChange={onChange}
             value={formData.senderAddress.country}
           />

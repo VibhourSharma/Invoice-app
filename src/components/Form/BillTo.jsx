@@ -2,7 +2,7 @@ import React from "react";
 
 const BillTo = ({ onChange, formData }) => {
   return (
-    <div className="mt-12">
+    <div className="mt-12 mobile:w-[90%]">
       <div className="flex items-center mb-6">
         <h5 className="text-[#7C5DFA] font-semibold text-sm outline-none">
           Bill to
@@ -16,7 +16,7 @@ const BillTo = ({ onChange, formData }) => {
           type="text"
           id="clientName"
           name="clientName"
-          className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none"
+          className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none mobile:w-full"
           onChange={onChange}
           value={formData.clientName}
         />
@@ -29,7 +29,7 @@ const BillTo = ({ onChange, formData }) => {
           type="text"
           id="clientEmail"
           name="clientEmail"
-          className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none"
+          className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none mobile:w-full"
           placeholder="e.g. email@xyz.com"
           onChange={onChange}
           value={formData.clientEmail}
@@ -43,7 +43,7 @@ const BillTo = ({ onChange, formData }) => {
           type="text"
           id="clientStreet"
           name="clientAddress.street"
-          className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none"
+          className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none mobile:w-full"
           onChange={onChange}
           value={formData.clientAddress.street}
         />
@@ -57,7 +57,7 @@ const BillTo = ({ onChange, formData }) => {
             type="text"
             id="clientCity"
             name="clientAddress.city"
-            className="border rounded-md p-2 w-[8rem] my-2 focus:outline-none"
+            className="border rounded-md p-2 w-[8rem] my-2 focus:outline-none mobile:w-[6rem]"
             onChange={onChange}
             value={formData.clientAddress.city}
           />
@@ -70,7 +70,7 @@ const BillTo = ({ onChange, formData }) => {
             type="text"
             id="clientPostCode"
             name="clientAddress.postCode"
-            className="border rounded-md p-2 w-[8rem] my-2 focus:outline-none"
+            className="border rounded-md p-2 w-[8rem] my-2 focus:outline-none mobile:w-[6rem]"
             onChange={onChange}
             value={formData.clientAddress.postCode}
           />
@@ -83,7 +83,7 @@ const BillTo = ({ onChange, formData }) => {
             type="text"
             id="clientCountry"
             name="clientAddress.country"
-            className="border rounded-md p-2 w-[12rem] my-2 focus:outline-none"
+            className="border rounded-md p-2 w-[12rem] my-2 focus:outline-none mobile:w-[7rem]"
             onChange={onChange}
             value={formData.clientAddress.country}
           />

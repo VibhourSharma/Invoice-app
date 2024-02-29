@@ -11,7 +11,7 @@ const InvoiceFilter = ({
   return (
     <>
       <div
-        className="flex items-center text-base font-bold cursor-pointer relative"
+        className="flex items-center text-base font-bold cursor-pointer relative mobile:text-sm"
         onClick={toggleCheckbox}
       >
         Filter by Status

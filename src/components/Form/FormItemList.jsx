@@ -55,7 +55,7 @@ const FormItemList = ({ formData, setFormData }) => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mobile:w-[90%]">
       <span className="text-slate-500 font-bold text-2xl mb-2">Item List</span>
       {formData.items.map((item, index) => (
         <div key={index} className="flex gap-3">
@@ -64,7 +64,7 @@ const FormItemList = ({ formData, setFormData }) => {
               Name:
             </label>
             <input
-              className="w-36 border rounded-md p-2 mt-2 my-6 focus:outline-none"
+              className="w-36 border rounded-md p-2 mt-2 my-6 focus:outline-none mobile:w-[7rem]"
               type="text"
               id={`name-${index}`}
               defaultValue={item.name}
@@ -78,7 +78,7 @@ const FormItemList = ({ formData, setFormData }) => {
               Qty:
             </label>
             <input
-              className="w-28 border rounded-md p-2 mt-2 my-6 focus:outline-none"
+              className="w-28 border rounded-md p-2 mt-2 my-6 focus:outline-none mobile:w-[3rem]"
               type="number"
               id={`quantity-${index}`}
               min={0}
@@ -92,7 +92,7 @@ const FormItemList = ({ formData, setFormData }) => {
               Price:
             </label>
             <input
-              className="w-28 border rounded-md p-2 mt-2 my-6 focus:outline-none"
+              className="w-28 border rounded-md p-2 mt-2 my-6 focus:outline-none mobile:w-[4rem]"
               type="number"
               id={`price-${index}`}
               min={0}
@@ -106,7 +106,7 @@ const FormItemList = ({ formData, setFormData }) => {
               Total:
             </label>
             <input
-              className="w-28 border rounded-md p-2 mt-2 my-6 focus:outline-none"
+              className="w-28 border rounded-md p-2 mt-2 my-6 focus:outline-none mobile:w-[5rem]"
               type="number"
               id="totalValue"
               min={0}
@@ -124,7 +124,7 @@ const FormItemList = ({ formData, setFormData }) => {
 
       <button
         type="button"
-        className="p-3 rounded-3xl text-[#7E88C3] font-bold hover:bg-[#DFE3FA]"
+        className="p-3 rounded-3xl text-[#7E88C3] font-bold hover:bg-[#DFE3FA] mobile:w-[90%]"
         onClick={handleAddItem}
       >
         +Add New Item

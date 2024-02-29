@@ -110,7 +110,7 @@ const Form = ({ onClose, receiptData, setWholeData }) => {
 
   return (
     <>
-      <form className="flex flex-col items-center h-full ml-8">
+      <form className="flex flex-col items-center h-full ml-8 mobile:text-xs mobile:ml-0">
         <BillFrom onChange={handleChange} formData={formData} />
         <BillTo onChange={handleChange} formData={formData} />
         <AdditionalInfo onChange={handleChange} formData={formData} />
@@ -121,7 +121,7 @@ const Form = ({ onClose, receiptData, setWholeData }) => {
         />
 
         {!receiptData ? (
-          <div className="flex w-[34rem] justify-between py-8">
+          <div className="flex w-[34rem] justify-between py-8 mobile:w-[90%]">
             <div className="flex items-center">
               <button
                 className="text-[#7E88C3] font-semibold h-12 w-24 rounded-3xl bg-[#F2F2F2] text-sm"
@@ -130,7 +130,7 @@ const Form = ({ onClose, receiptData, setWholeData }) => {
                 Discard
               </button>
             </div>
-            <div className="flex items-center justify-between w-[17rem]">
+            <div className="flex items-center justify-between w-[17rem] ">
               <button
                 onClick={handleDraft}
                 className="bg-[#373B53] w-32 h-12 rounded-3xl text-[#7E88C3] text-sm font-bold"
@@ -147,7 +147,7 @@ const Form = ({ onClose, receiptData, setWholeData }) => {
             </div>
           </div>
         ) : (
-          <div className="flex w-[34rem] gap-4 justify-end items-center py-8">
+          <div className="flex w-[34rem] gap-4 justify-end items-center py-8 mobile:justify-center">
             <button
               onClick={handleDiscard}
               className="bg-[#373B53] w-32 h-12 rounded-3xl text-[#7E88C3] text-sm font-bold"

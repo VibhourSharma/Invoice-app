@@ -20,17 +20,20 @@ const ReceiptLayout = ({
   return (
     <div className="dark:bg-[#141625] dark:text-white bg-[#F2F2F2] flex min-h-screen justify-center tracking-tighter">
       <div className="m-20 w-1/2 flex flex-col mobile:w-[95%] mobile:m-8 mobile:text-sm">
+        {/* top navbar */}
         <div className="flex items-center cursor-pointer w-20" onClick={goBack}>
           <div className="flex items-center justify-center mr-4">
             <img src={leftIcon} alt="icon" className="w-full" />
           </div>
           <div className="flex items-center font-bold text-base">Go back</div>
         </div>
-        <div className="mt-8 bg-white flex justify-between items-center p-8 rounded-lg dark:bg-[#1E2139]">
-          <div className="flex justify-center items-center gap-4">
+
+        {/* Nav bar along work */}
+        <div className="mt-8 bg-white flex justify-between items-center p-8 rounded-lg dark:bg-[#1E2139] mobile:gap-12">
+          <div className="flex justify-center mobile:flex-col items-center gap-4 mobile:gap-2">
             <span className="text-slate-500">Status</span>
             <div
-              className={`dark:bg-opacity-5 font-semibold rounded-lg flex items-center justify-center w-20 p-0.5 ${
+              className={`dark:bg-opacity-5 font-semibold rounded-lg flex items-center justify-center w-20 p-0.5 mobile:w-16 mobile:p-0 ${
                 statusColors[receiptData.status]
               } ${receiptData.status === "draft" ? "dark:text-white" : ""}`}
             >
@@ -40,14 +43,15 @@ const ReceiptLayout = ({
           <div className="flex items-center justify-center gap-2 font-semibold text-sm">
             <div>
               <button
-                className="text-[#7C5DFA] bg-slate-50 h-12 w-20 rounded-3xl hover:bg-[#DFE3FA]"
+                className="text-[#7C5DFA] bg-slate-50 h-12 w-20 rounded-3xl hover:bg-[#DFE3FA]
+                mobile:w-16"
                 onClick={handleEditClick}
               >
                 Edit
               </button>
             </div>
             <button
-              className="text-white bg-red-500 h-12 rounded-3xl w-24 hover:bg-red-400"
+              className="text-white bg-red-500 h-12 rounded-3xl w-24 hover:bg-red-400 mobile:w-16"
               onClick={showDeleteConfirmation}
             >
               Delete
@@ -55,7 +59,7 @@ const ReceiptLayout = ({
             <button
               onClick={markAsPaid}
               disabled={receiptData.status === "paid"}
-              className={`bg-[#7C5DFA] text-white h-12 w-32 rounded-3xl hover:bg-[#8e72fc] ${
+              className={`bg-[#7C5DFA] text-white h-12 w-32 rounded-3xl hover:bg-[#8e72fc] mobile:w-24 ${
                 receiptData.status === "paid"
                   ? "bg-[#E5DFFE] hover:bg-[#E5DFFE] cursor-not-allowed"
                   : ""
@@ -65,6 +69,8 @@ const ReceiptLayout = ({
             </button>
           </div>
         </div>
+
+        {/* belowe work */}
         <div className="mt-8 bg-white flex flex-col justify-between items-center p-8 rounded-lg dark:bg-[#1E2139]">
           <div className="w-full flex justify-between mb-8">
             <div>
@@ -78,8 +84,8 @@ const ReceiptLayout = ({
               <span>{receiptData.clientAddress.country}</span>
             </div>
           </div>
-          <div className="w-full flex">
-            <div className="mr-32">
+          <div className="w-full flex mobile:flex-col">
+            <div className="mr-32 mobile:flex mobile:w-full mobile:justify-between">
               <div className="flex flex-col mb-8">
                 <span className="text-slate-500">Invoice Date</span>
                 <span className="font-bold text-xl">
@@ -113,7 +119,7 @@ const ReceiptLayout = ({
                 </span>
               </div>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col mobile:mt-6">
               <span className="text-slate-500">Sent to</span>
               <span className="text-xl font-semibold">
                 {receiptData.clientEmail}

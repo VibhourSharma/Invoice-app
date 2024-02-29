@@ -1,6 +1,6 @@
 const AdditionalInfo = ({ onChange, formData }) => {
   return (
-    <div className="mt-12">
+    <div className="mt-12 mobile:w-[90%]">
       <div className="flex flex-col">
         <label htmlFor="paymentDue" className="text-slate-500 text-sm mb-2">
           Invoice Date
@@ -9,7 +9,7 @@ const AdditionalInfo = ({ onChange, formData }) => {
           type="date"
           id="paymentDue"
           name="paymentDue"
-          className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none"
+          className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none mobile:w-full"
           placeholder="e.g. email@xyz.com"
           onChange={onChange}
           value={formData.paymentDue}
@@ -23,7 +23,7 @@ const AdditionalInfo = ({ onChange, formData }) => {
           name="paymentTerms"
           placeholder="Select..."
           id="paymentTerms"
-          className="border rounded-md px-2 py-3.5 mt-2 my-6 w-[34rem] focus:outline-none text-bold"
+          className="border rounded-md px-2 py-3.5 mt-2 my-6 w-[34rem] focus:outline-none text-bold mobile:w-full"
           onChange={onChange}
           value={formData.paymentTerms}
         >
@@ -41,7 +41,7 @@ const AdditionalInfo = ({ onChange, formData }) => {
           type="text"
           id="description"
           name="description"
-          className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none"
+          className="border rounded-md p-2 mt-2 my-6 w-[34rem] focus:outline-none mobile:w-full"
           placeholder="e.g. Graphic Design Service"
           onChange={onChange}
           value={formData.description}

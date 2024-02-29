@@ -49,16 +49,16 @@ const InvoiceDashboard = ({ handleNewInvoiceClick }) => {
   }, [selectedFilters]);
 
   return (
-    <div className="dark:bg-[#141625] dark:text-white bg-[#F2F2F2] flex min-h-screen justify-center tracking-tighter mobile:text-sm">
-      <div className="m-20 mobile:m-8">
-        <div className="flex justify-between mb-16">
+    <div className="dark:bg-[#141625] dark:text-white bg-[#F2F2F2] flex min-h-screen justify-center tracking-tighter mobile:text-sm mobile:w-full">
+      <div className="m-20 w-[45%] mobile:w-[90%] mobile:m-8">
+        <div className="flex justify-between mb-14 mobile:w-full">
           <div>
-            <h1 className="text-4xl font-bold">Invoices</h1>
-            <p className="text-base text-slate-500">
+            <h1 className="text-4xl font-bold mobile:text-3xl">Invoices</h1>
+            <p className="text-base mobile:text-sm text-slate-500">
               There are a total {filteredData.length} Invoices
             </p>
           </div>
-          <div className="flex items-center justify-between w-72">
+          <div className="flex items-center justify-between mobile:justify-end w-72 mobile:gap-2">
             <InvoiceFilter
               isChecked={isChecked}
               toggleCheckbox={toggleCheckbox}
@@ -67,10 +67,10 @@ const InvoiceDashboard = ({ handleNewInvoiceClick }) => {
               statusColors={statusColors}
             />
             <button
-              className="bg-[#7C5DFA] text-white flex items-center rounded-r-3xl rounded-l-3xl text-base font-bold p-2 gap-3"
+              className="bg-[#7C5DFA] text-white flex items-center rounded-r-3xl rounded-l-3xl text-base font-bold p-2 gap-3 mobile:text-sm mobile:gap-2 mobile:p-1"
               onClick={handleNewInvoiceClick}
             >
-              <img src={plusIcon} alt="plus" className="rounded-full" />
+              <img src={plusIcon} alt="plus" className="rounded-full " />
               New Invoice
             </button>
           </div>

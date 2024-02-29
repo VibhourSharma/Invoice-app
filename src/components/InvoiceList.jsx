@@ -18,27 +18,27 @@ const InvoiceList = ({ statusColors, filteredData }) => {
           <Link to={`/receipt/${invoice.id}`} key={invoice.id}>
             <div className="flex rounded-lg h-24 bg-white mt-4 justify-between dark:bg-[#1E2139] hover:border hover:border-[#7C5DFA] cursor-pointer">
               <div className="flex justify-center items-center">
-                <span className="font-bold mr-12 ml-8">
+                <span className="font-bold mr-12 ml-8 mobile:mr-6">
                   <span className="text-slate-500">#</span>
                   {invoice.id}
                 </span>
-                <span className="text-slate-500 mr-12">
+                <span className="text-slate-500 mr-12 mobile:mr-4">
                   {invoice.createdAt}
                 </span>
                 <span className="text-slate-500">{invoice.clientName}</span>
               </div>
-              <div className="flex items-center">
-                <span className="font-bold text-xl mr-12">
+              <div className="flex items-center mobile:flex-col mobile:text-sm mobile:justify-center mobile:mr-6">
+                <span className="font-bold text-xl mr-12 mobile:text-base mobile:mr-0">
                   £ {calculateTotal(invoice.items)}
                 </span>
                 <div
-                  className={`dark:bg-opacity-5 font-semibold rounded-lg flex items-center justify-center w-20 p-0.5 mr-12 ${
+                  className={`dark:bg-opacity-5 font-semibold rounded-lg flex items-center justify-center w-20 p-0.5 mr-12 mobile:mr-0 mobile:w-16 mobile:p-0 ${
                     statusColors[invoice.status]
                   } ${invoice.status === "draft" ? "dark:text-white" : ""}`}
                 >
                   <span className="text-3xl">•</span> {invoice.status}
                 </div>
-                <img src={rightArrow} alt=">" className="mr-8" />
+                <img src={rightArrow} alt=">" className="mr-8 mobile:hidden" />
               </div>
             </div>
           </Link>

@@ -9,7 +9,7 @@ export default {
       },
     },
     screens: {
-      mobile: { max: "720px" },
+      mobile: { max: "450px" },
     },
   },
   plugins: [],
